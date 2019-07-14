@@ -1,4 +1,4 @@
-﻿namespace FTool
+﻿namespace FNEndpoints
 {
     partial class DownloadUpdateDialog
     {

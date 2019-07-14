@@ -1,4 +1,4 @@
-﻿using FTool.Properties;
+﻿using FNEndpoints.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FTool
+namespace FNEndpoints
 {
     public partial class DownloadUpdateDialog : Form
     {
