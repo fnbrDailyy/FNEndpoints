@@ -77,6 +77,7 @@
             this.BtnNextSearch.TabIndex = 9;
             this.BtnNextSearch.Tag = "Find next (Enter)";
             this.BtnNextSearch.UseVisualStyleBackColor = true;
+            this.BtnNextSearch.Click += new System.EventHandler(this.BtnNextSearch_Click);
             // 
             // BtnPrevSearch
             // 
@@ -91,6 +92,7 @@
             this.BtnPrevSearch.TabIndex = 8;
             this.BtnPrevSearch.Tag = "Find previous (Shift+Enter)";
             this.BtnPrevSearch.UseVisualStyleBackColor = true;
+            this.BtnPrevSearch.Click += new System.EventHandler(this.BtnPrevSearch_Click);
             // 
             // BtnCloseSearch
             // 
@@ -105,6 +107,7 @@
             this.BtnCloseSearch.TabIndex = 7;
             this.BtnCloseSearch.Tag = "Close (Esc)";
             this.BtnCloseSearch.UseVisualStyleBackColor = true;
+            this.BtnCloseSearch.Click += new System.EventHandler(this.BtnClearSearch_Click);
             // 
             // TxtSearch
             // 
@@ -117,6 +120,8 @@
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(189, 25);
             this.TxtSearch.TabIndex = 6;
+            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            this.TxtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             // 
             // MyScintilla
             // 

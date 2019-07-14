@@ -35,6 +35,7 @@ namespace FNEndpoints
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.store_button = new System.Windows.Forms.Button();
             this.aesKey_button = new System.Windows.Forms.Button();
             this.news_button = new System.Windows.Forms.Button();
             this.ltm_info_button = new System.Windows.Forms.Button();
@@ -43,8 +44,9 @@ namespace FNEndpoints
             this.ltm_info1 = new FNEndpoints.Pages.LTMInfo();
             this.news1 = new FNEndpoints.Pages.News();
             this.aesKeys1 = new FNEndpoints.Pages.AesKeys();
-            this.store_button = new System.Windows.Forms.Button();
             this.store1 = new FNEndpoints.Pages.Store();
+            this.status_button = new System.Windows.Forms.Button();
+            this.status1 = new FNEndpoints.Pages.Status();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +80,7 @@ namespace FNEndpoints
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.status_button);
             this.panel1.Controls.Add(this.store_button);
             this.panel1.Controls.Add(this.aesKey_button);
             this.panel1.Controls.Add(this.news_button);
@@ -88,6 +91,19 @@ namespace FNEndpoints
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 681);
             this.panel1.TabIndex = 1;
+            // 
+            // store_button
+            // 
+            this.store_button.BackColor = System.Drawing.Color.Gainsboro;
+            this.store_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.store_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.store_button.Location = new System.Drawing.Point(0, 357);
+            this.store_button.Name = "store_button";
+            this.store_button.Size = new System.Drawing.Size(200, 91);
+            this.store_button.TabIndex = 4;
+            this.store_button.Text = "Store";
+            this.store_button.UseVisualStyleBackColor = false;
+            this.store_button.Click += new System.EventHandler(this.store_button_Click);
             // 
             // aesKey_button
             // 
@@ -173,19 +189,6 @@ namespace FNEndpoints
             this.aesKeys1.Size = new System.Drawing.Size(991, 681);
             this.aesKeys1.TabIndex = 4;
             // 
-            // store_button
-            // 
-            this.store_button.BackColor = System.Drawing.Color.Gainsboro;
-            this.store_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.store_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.store_button.Location = new System.Drawing.Point(0, 357);
-            this.store_button.Name = "store_button";
-            this.store_button.Size = new System.Drawing.Size(200, 91);
-            this.store_button.TabIndex = 4;
-            this.store_button.Text = "Store";
-            this.store_button.UseVisualStyleBackColor = false;
-            this.store_button.Click += new System.EventHandler(this.store_button_Click);
-            // 
             // store1
             // 
             this.store1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -194,12 +197,34 @@ namespace FNEndpoints
             this.store1.Size = new System.Drawing.Size(991, 681);
             this.store1.TabIndex = 5;
             // 
+            // status_button
+            // 
+            this.status_button.BackColor = System.Drawing.Color.Gainsboro;
+            this.status_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.status_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status_button.Location = new System.Drawing.Point(0, 447);
+            this.status_button.Name = "status_button";
+            this.status_button.Size = new System.Drawing.Size(200, 91);
+            this.status_button.TabIndex = 5;
+            this.status_button.Text = "Status";
+            this.status_button.UseVisualStyleBackColor = false;
+            this.status_button.Click += new System.EventHandler(this.status_button_Click);
+            // 
+            // status1
+            // 
+            this.status1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.status1.Location = new System.Drawing.Point(200, 24);
+            this.status1.Name = "status1";
+            this.status1.Size = new System.Drawing.Size(991, 681);
+            this.status1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1191, 705);
+            this.Controls.Add(this.status1);
             this.Controls.Add(this.store1);
             this.Controls.Add(this.aesKeys1);
             this.Controls.Add(this.news1);
@@ -234,6 +259,8 @@ namespace FNEndpoints
         private Pages.AesKeys aesKeys1;
         private System.Windows.Forms.Button store_button;
         private Store store1;
+        private System.Windows.Forms.Button status_button;
+        private Status status1;
     }
 }
 

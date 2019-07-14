@@ -13,9 +13,9 @@ using FNEndpoints.Properties;
 
 namespace FNEndpoints.Pages
 {
-    public partial class Store : UserControl
+    public partial class Status : UserControl
     {
-        public Store()
+        public Status()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace FNEndpoints.Pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            myScintilla1.setText(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(Api.GetEndpoint("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog", true, Method.GET)), Formatting.Indented));
+            myScintilla1.setText(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(Api.GetEndpoint("https://lightswitch-public-service-prod06.ol.epicgames.com/lightswitch/api/service/bulk/status?serviceId=Fortnite", true, Method.GET)), Formatting.Indented));
         }
     }
 }

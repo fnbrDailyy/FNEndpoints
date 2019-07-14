@@ -48,10 +48,15 @@ namespace FNEndpoints
             this.store_button.Image = (Properties.Settings.Default.Images) ? (Resources.store) : null;
             this.store_button.Text = (Properties.Settings.Default.Images) ? "" : "Store";
 
+            this.status_button.Image = (Properties.Settings.Default.Images) ? (Resources.status) : null;
+            this.status_button.Text = (Properties.Settings.Default.Images) ? "" : "Status";
+
             this.timeline1.updateSettings();
             this.news1.updateSettings();
             this.aesKeys1.updateSettings();
             this.ltm_info1.updateSettings();
+            this.store1.updateSettings();
+            this.status1.updateSettings();
 
         }
 
@@ -125,7 +130,15 @@ namespace FNEndpoints
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var aboutForm = new About();
+            if (Application.OpenForms[aboutForm.Name] == null)
+            {
+                aboutForm.Show();
+            }
+            else
+            {
+                Application.OpenForms[aboutForm.Name].Focus();
+            }
         }
 
         private void openPage(UserControl form)
@@ -133,8 +146,9 @@ namespace FNEndpoints
             timeline1.Visible = form == timeline1 ? true : false;
             ltm_info1.Visible = form == ltm_info1 ? true : false;
             news1.Visible = form == news1 ? true : false;
-            aesKeys1.Visible = form == aesKeys1 ? true : false;
+            aesKeys1.Visible = form == aesKeys1 ? true : false; 
             store1.Visible = form == store1 ? true : false;
+            status1.Visible = form == status1 ? true : false;
         }
 
         private void timeline_button_Click(object sender, EventArgs e)
@@ -160,6 +174,11 @@ namespace FNEndpoints
         private void store_button_Click(object sender, EventArgs e)
         {
             openPage(store1);
+        }
+
+        private void status_button_Click(object sender, EventArgs e)
+        {
+            openPage(status1);
         }
     }
 }

@@ -367,6 +367,18 @@ namespace FNEndpoints.Scintilla
             SearchManager.Find(true, true);
         }
 
+        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (HotKeyManager.IsHotkey(e, Keys.Enter))
+            {
+                SearchManager.Find(true, false);
+            }
+            if (HotKeyManager.IsHotkey(e, Keys.Enter, true) || HotKeyManager.IsHotkey(e, Keys.Enter, false, true))
+            {
+                SearchManager.Find(false, false);
+            }
+        }
+
         #endregion
 
         #region Utils

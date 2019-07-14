@@ -16,5 +16,30 @@ namespace FNEndpoints
         {
             InitializeComponent();
         }
+
+        private void twitter_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://twitter.com/BRLeaks_");
+        }
+
+        private void instragram_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://instagram.com/fnbrDailyy");
+        }
+
+        private void twitter_support_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://twitter.com/FNEndpoints");
+        }
+
+        private void discord_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/fxDtfuN");
+        }
+
+        private void reddit_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.reddit.com/user/BRLeaks_/");
+        }
     }
 }

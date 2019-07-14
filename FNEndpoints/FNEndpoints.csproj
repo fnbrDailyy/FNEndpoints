@@ -140,6 +140,12 @@
     <Compile Include="Pages\News.Designer.cs">
       <DependentUpon>News.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Status.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Status.Designer.cs">
+      <DependentUpon>Status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Store.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\News.resx">
       <DependentUpon>News.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Status.resx">
+      <DependentUpon>Status.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Store.resx">
       <DependentUpon>Store.cs</DependentUpon>
@@ -251,6 +260,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\aesKeys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\discord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\reddit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\twitter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.3.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.3.3.0\build\Fody.targets')" />

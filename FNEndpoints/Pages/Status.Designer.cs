@@ -1,6 +1,6 @@
 ﻿namespace FNEndpoints.Pages
 {
-    partial class Store
+    partial class Status
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -43,7 +43,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(991, 64);
-            this.panel1.TabIndex = 13;
+            this.panel1.TabIndex = 15;
             // 
             // button1
             // 
@@ -65,7 +65,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(991, 681);
-            this.panel2.TabIndex = 14;
+            this.panel2.TabIndex = 16;
             // 
             // myScintilla1
             // 
@@ -75,13 +75,13 @@
             this.myScintilla1.Size = new System.Drawing.Size(991, 681);
             this.myScintilla1.TabIndex = 0;
             // 
-            // Store
+            // Status
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Store";
+            this.Name = "Status";
             this.Size = new System.Drawing.Size(991, 681);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
