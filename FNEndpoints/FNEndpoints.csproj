@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiEndpoints.cs" />
+    <Compile Include="Api.cs" />
     <Compile Include="DownloadUpdateDialog.cs">
       <SubType>Form</SubType>
     </Compile>

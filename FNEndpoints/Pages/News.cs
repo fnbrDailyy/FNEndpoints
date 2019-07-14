@@ -20,7 +20,7 @@ namespace FNEndpoints.Pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string response = ApiEndpoints.GetEndpoint("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game", false, RestSharp.Method.GET);
+            string response = Api.GetEndpoint("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game", false, RestSharp.Method.GET);
             var obj = JsonConvert.DeserializeObject(response);
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
 

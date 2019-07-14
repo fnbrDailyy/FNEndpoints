@@ -22,7 +22,7 @@ namespace FNEndpoints.Pages
         private void button1_Click(object sender, EventArgs e)
         {
             scintilla1.ReadOnly = false;
-            scintilla1.Text = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(ApiEndpoints.GetAesKeys()), Formatting.Indented);
+            scintilla1.Text = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(Api.GetAesKeys()), Formatting.Indented);
             scintilla1.ReadOnly = true;
         }
 

@@ -31,5 +31,15 @@ namespace FNEndpoints
             Properties.Settings.Default.Save();
             Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.SelectedPath = textBox3.Text;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox3.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
     }
 }
