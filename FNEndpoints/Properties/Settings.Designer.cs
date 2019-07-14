@@ -49,7 +49,7 @@ namespace FNEndpoints.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EN")]
         public string Language {
             get {
                 return ((string)(this["Language"]));
@@ -68,6 +68,18 @@ namespace FNEndpoints.Properties {
             }
             set {
                 this["pakPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Images {
+            get {
+                return ((bool)(this["Images"]));
+            }
+            set {
+                this["Images"] = value;
             }
         }
     }

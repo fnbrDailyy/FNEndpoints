@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using FNEndpoints.Properties;
+using FNEndpoints.Scintilla;
 
 namespace FNEndpoints.Pages
 {
@@ -18,14 +20,18 @@ namespace FNEndpoints.Pages
         {
             InitializeComponent();
 
-            MyScintilla.ScintillaInstance(scintilla1);
+            updateSettings();
+        }
+
+        public void updateSettings()
+        {
+            this.button1.Image = (Properties.Settings.Default.Images) ? (Resources.load) : null;
+            this.button1.Text = (Properties.Settings.Default.Images) ? "" : "Load";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            scintilla1.ReadOnly = false;
-            scintilla1.Text = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(Api.GetAesKeys()), Formatting.Indented);
-            scintilla1.ReadOnly = true;
+            myScintilla1.setText(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(Api.GetAesKeys()), Formatting.Indented));
         }
 
         private void label1_Click(object sender, EventArgs e)

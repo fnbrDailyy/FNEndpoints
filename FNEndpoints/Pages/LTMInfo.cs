@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using FNEndpoints.Properties;
+using Newtonsoft.Json;
 using FNEndpoints.Scintilla;
 
 namespace FNEndpoints.Pages
 {
-    public partial class Timeline : UserControl
+    public partial class LTMInfo : UserControl
     {
-        public Timeline()
+        public LTMInfo()
         {
             InitializeComponent();
 
@@ -30,11 +30,11 @@ namespace FNEndpoints.Pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string response = Api.GetEndpoint("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/calendar/v1/timeline", true, RestSharp.Method.GET);
-            var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(response), Formatting.Indented);
+            string response = Api.GetEndpoint("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game", false, RestSharp.Method.GET);
+            dynamic obj = JsonConvert.DeserializeObject(response);
+            var json = JsonConvert.SerializeObject(obj.playlistinformation, Formatting.Indented);
             
             myScintilla1.setText(json);
-
         }
     }
 }

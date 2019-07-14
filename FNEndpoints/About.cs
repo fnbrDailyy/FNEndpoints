@@ -1,27 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FNEndpoints.Pages
+namespace FNEndpoints
 {
-    public partial class LTM : UserControl
+    public partial class About : Form
     {
-        public LTM()
+        public About()
         {
             InitializeComponent();
-            
-            MyScintilla.ScintillaInstance(scintilla1);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

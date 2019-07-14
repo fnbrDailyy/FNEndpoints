@@ -38,12 +38,15 @@
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PakGroup = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DesignGroupBox = new System.Windows.Forms.GroupBox();
+            this.imagesCheckBox = new System.Windows.Forms.CheckBox();
             this.EpicDataGroup.SuspendLayout();
             this.EndpointsGroup.SuspendLayout();
             this.PakGroup.SuspendLayout();
+            this.DesignGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // EpicDataGroup
@@ -113,7 +116,7 @@
             this.EndpointsGroup.Size = new System.Drawing.Size(776, 49);
             this.EndpointsGroup.TabIndex = 4;
             this.EndpointsGroup.TabStop = false;
-            this.EndpointsGroup.Text = "Epic Games Data";
+            this.EndpointsGroup.Text = "Endpoints";
             // 
             // LanguageComboBox
             // 
@@ -123,7 +126,9 @@
             "EN",
             "DE",
             "FR",
-            "JA"});
+            "JA",
+            "ES",
+            "IT"});
             this.LanguageComboBox.Location = new System.Drawing.Point(73, 19);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(697, 21);
@@ -151,6 +156,16 @@
             this.PakGroup.TabStop = false;
             this.PakGroup.Text = ".Pak Files";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(719, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(51, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = ">>";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(49, 19);
@@ -167,21 +182,33 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Input: ";
             // 
-            // button1
+            // DesignGroupBox
             // 
-            this.button1.Location = new System.Drawing.Point(719, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = ">>";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.DesignGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DesignGroupBox.Controls.Add(this.imagesCheckBox);
+            this.DesignGroupBox.Location = new System.Drawing.Point(12, 194);
+            this.DesignGroupBox.Name = "DesignGroupBox";
+            this.DesignGroupBox.Size = new System.Drawing.Size(776, 49);
+            this.DesignGroupBox.TabIndex = 5;
+            this.DesignGroupBox.TabStop = false;
+            this.DesignGroupBox.Text = "Design";
+            // 
+            // imagesCheckBox
+            // 
+            this.imagesCheckBox.AutoSize = true;
+            this.imagesCheckBox.Location = new System.Drawing.Point(9, 19);
+            this.imagesCheckBox.Name = "imagesCheckBox";
+            this.imagesCheckBox.Size = new System.Drawing.Size(60, 17);
+            this.imagesCheckBox.TabIndex = 1;
+            this.imagesCheckBox.Text = "Images";
+            this.imagesCheckBox.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DesignGroupBox);
             this.Controls.Add(this.PakGroup);
             this.Controls.Add(this.EndpointsGroup);
             this.Controls.Add(this.OKButton);
@@ -195,6 +222,8 @@
             this.EndpointsGroup.PerformLayout();
             this.PakGroup.ResumeLayout(false);
             this.PakGroup.PerformLayout();
+            this.DesignGroupBox.ResumeLayout(false);
+            this.DesignGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +243,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox DesignGroupBox;
+        private System.Windows.Forms.CheckBox imagesCheckBox;
     }
 }

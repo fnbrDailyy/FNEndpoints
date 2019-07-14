@@ -12,14 +12,18 @@ namespace FNEndpoints
 {
     public partial class Settings : Form
     {
-        public Settings()
+        Form1 mainForm;
+        public Settings(Form1 form)
         {
+            mainForm = form;
+
             InitializeComponent();
 
             textBox1.Text = Properties.Settings.Default.EpicEmail;
             textBox2.Text = Properties.Settings.Default.EpicPassword;
             LanguageComboBox.Text = Properties.Settings.Default.Language;
             textBox3.Text = Properties.Settings.Default.pakPath;
+            imagesCheckBox.Checked = Properties.Settings.Default.Images;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -28,7 +32,11 @@ namespace FNEndpoints
             Properties.Settings.Default.EpicPassword = textBox2.Text;
             Properties.Settings.Default.Language = LanguageComboBox.Text;
             Properties.Settings.Default.pakPath = textBox3.Text;
+            Properties.Settings.Default.Images = imagesCheckBox.Checked;
             Properties.Settings.Default.Save();
+
+            mainForm.updateSettings();
+
             Close();
         }
 
