@@ -40,7 +40,6 @@ namespace FNEndpoints
                     {
                         ShowUpdateForm(Convert.ToString(json.assets[0].browser_download_url));
 
-
                     }
                 }
             }

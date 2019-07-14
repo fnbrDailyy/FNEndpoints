@@ -205,8 +205,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DLLs\" />
+    <Content Include="ScintillaNET FindReplaceDialog.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.3.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.3.3.0\build\Fody.targets')" />
