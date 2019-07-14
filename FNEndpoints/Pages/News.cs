@@ -16,6 +16,8 @@ namespace FNEndpoints.Pages
         public News()
         {
             InitializeComponent();
+
+            MyScintilla.ScintillaInstance(scintilla1);
         }
 
         private void button1_Click(object sender, EventArgs e)
