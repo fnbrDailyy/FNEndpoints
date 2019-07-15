@@ -199,6 +199,9 @@
     <EmbeddedResource Include="AdminTab\AdminInputPassword.resx">
       <DependentUpon>AdminInputPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminTab\AdminTab.resx">
+      <DependentUpon>AdminTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DownloadUpdateDialog.resx">
       <DependentUpon>DownloadUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>

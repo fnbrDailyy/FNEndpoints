@@ -1,4 +1,5 @@
-﻿using FNEndpoints.Properties;
+﻿using FNEndpoints.AdminTab;
+using FNEndpoints.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -183,7 +184,7 @@ namespace FNEndpoints
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            var result = new AdminInputPassword().ShowDialog();
         }
     }
 }

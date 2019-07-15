@@ -82,5 +82,53 @@ namespace FNEndpoints.Properties {
                 this["Images"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string consumer_key {
+            get {
+                return ((string)(this["consumer_key"]));
+            }
+            set {
+                this["consumer_key"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string consumer_secret {
+            get {
+                return ((string)(this["consumer_secret"]));
+            }
+            set {
+                this["consumer_secret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string access_token_key {
+            get {
+                return ((string)(this["access_token_key"]));
+            }
+            set {
+                this["access_token_key"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string access_token_secret {
+            get {
+                return ((string)(this["access_token_secret"]));
+            }
+            set {
+                this["access_token_secret"] = value;
+            }
+        }
     }
 }

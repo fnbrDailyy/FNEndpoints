@@ -19,12 +19,24 @@ namespace FNEndpoints.AdminTab
 
         private void ok_button_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
+            AdminTab adminTab = new AdminTab(passwordField.Text);
+            if (adminTab.show)
+            {
+                adminTab.Show();
+                adminTab.Focus();
+            }
+            else
+            {
+                adminTab.Close();
+            }
+            Close();
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
