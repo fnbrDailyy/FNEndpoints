@@ -90,6 +90,7 @@ namespace FNEndpoints.Scintilla
             
             scintilla1.DwellStart += DwellStart;
             scintilla1.MouseClick += MouseClick;
+            scintilla1.MouseMove += MouseMove;
 
 
         }
@@ -187,13 +188,7 @@ namespace FNEndpoints.Scintilla
                 {
                     scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Open Image in new Window", (s, ea) =>
                     {
-                        Form viewer = new Form();
-                        PictureBox pictureBox = new PictureBox();
-                        pictureBox.Dock = DockStyle.Fill;
-                        pictureBox.Load(text);
-                        pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                        viewer.Controls.Add(pictureBox);
-                        viewer.ShowDialog();
+                        new ImageViewer(text).ShowDialog();
                     }));
                     scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Save Image", (s, ea) =>
                     {
@@ -223,6 +218,36 @@ namespace FNEndpoints.Scintilla
                 ToolTip toolTip = new ToolTip();
                 toolTip.SetToolTip(scintilla1, "STRG+Click to open");
             }
+        }
+        private void MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            System.Drawing.Point point = System.Windows.Forms.Control.MousePosition;
+            var cor = scintilla1.PointToClient(point);
+            var pos = scintilla1.CharPositionFromPoint(cor.X, cor.Y);
+
+            int startPos = ValueStartPosition(pos);
+            int endPos = ValueEndPosition(pos);
+
+            string text = scintilla1.GetTextRange(startPos, endPos - startPos);
+
+            if (text.StartsWith("http://") || text.StartsWith("https://"))
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    this.DragDropImage(text);
+                }
+            }
+        }
+        private void DragDropImage(string url)
+        {
+            string filename = url.Split('/').Last();
+            string path = Path.Combine(Path.GetTempPath(), filename);
+
+            var webClient = new WebClient();
+            webClient.DownloadFile(url, path);
+
+            var paths = new[] { path };
+            scintilla1.DoDragDrop(new DataObject(DataFormats.FileDrop, paths), DragDropEffects.Copy);
         }
         private void MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
