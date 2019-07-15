@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyScintilla));
             this.TextPanel = new System.Windows.Forms.Panel();
             this.PanelSearch = new System.Windows.Forms.Panel();
             this.BtnNextSearch = new System.Windows.Forms.Button();
@@ -69,7 +68,7 @@
             this.BtnNextSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnNextSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNextSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnNextSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnNextSearch.Image")));
+            this.BtnNextSearch.Image = global::FNEndpoints.Properties.Resources.search_down;
             this.BtnNextSearch.Location = new System.Drawing.Point(233, 4);
             this.BtnNextSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnNextSearch.Name = "BtnNextSearch";
@@ -84,7 +83,7 @@
             this.BtnPrevSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnPrevSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPrevSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnPrevSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnPrevSearch.Image")));
+            this.BtnPrevSearch.Image = global::FNEndpoints.Properties.Resources.search_up;
             this.BtnPrevSearch.Location = new System.Drawing.Point(205, 4);
             this.BtnPrevSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnPrevSearch.Name = "BtnPrevSearch";
@@ -99,7 +98,7 @@
             this.BtnCloseSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCloseSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCloseSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnCloseSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnCloseSearch.Image")));
+            this.BtnCloseSearch.Image = global::FNEndpoints.Properties.Resources.search_close;
             this.BtnCloseSearch.Location = new System.Drawing.Point(261, 4);
             this.BtnCloseSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCloseSearch.Name = "BtnCloseSearch";

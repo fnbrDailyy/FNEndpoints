@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FNEndpoints.Scintilla.Utils;
 using ScintillaNET;
+using System.Diagnostics;
+using System.Windows.Input;
+using System.IO;
+using System.Net;
 
 namespace FNEndpoints.Scintilla
 {
@@ -35,6 +39,8 @@ namespace FNEndpoints.Scintilla
         private void MyScintilla_Load(object sender, EventArgs e)
         {
             scintilla1 = new ScintillaNET.Scintilla();
+            
+            scintilla1.ReadOnly = true;
             TextPanel.Controls.Add(scintilla1);
 
             scintilla1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -43,6 +49,8 @@ namespace FNEndpoints.Scintilla
             // INITIAL VIEW CONFIG
             scintilla1.WrapMode = WrapMode.None;
             scintilla1.IndentationGuides = IndentView.LookBoth;
+
+            setContextMenu();
 
             // STYLING
             InitColors();
@@ -63,9 +71,7 @@ namespace FNEndpoints.Scintilla
 
         private void InitColors()
         {
-
-            scintilla1.SetSelectionBackColor(true, IntToColor(0x114D9C));
-
+            scintilla1.SetSelectionBackColor(true, IntToColor(0xaaaaaa));
         }
 
         private void InitHotkeys()
@@ -80,9 +86,15 @@ namespace FNEndpoints.Scintilla
 
             scintilla1.KeyDown += KeyDown;
 
+            scintilla1.MouseDwellTime = 100;
+            
+            scintilla1.DwellStart += DwellStart;
+            scintilla1.MouseClick += MouseClick;
+
 
         }
-        private void KeyDown(object sender, KeyEventArgs e)
+
+        private void KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
@@ -116,17 +128,166 @@ namespace FNEndpoints.Scintilla
 
             // Configure the default style
             scintilla1.StyleResetDefault();
-            scintilla1.Styles[ScintillaNET.Style.Default].Font = "Consolas";
-            scintilla1.Styles[ScintillaNET.Style.Default].Size = 10;
-            scintilla1.Styles[ScintillaNET.Style.Default].BackColor = IntToColor(0x212121);
-            scintilla1.Styles[ScintillaNET.Style.Default].ForeColor = IntToColor(0xFFFFFF);
+            scintilla1.Styles[Style.Default].Font = "Consolas";
+            scintilla1.Styles[Style.Default].Size = 10;
+            scintilla1.Styles[Style.Default].BackColor = IntToColor(0x212121);
+            scintilla1.Styles[Style.Default].ForeColor = IntToColor(0xFFFFFF);
+
             scintilla1.StyleClearAll();
+
+            scintilla1.Styles[Style.Json.PropertyName].ForeColor = IntToColor(0x00ff00);
+            scintilla1.Styles[Style.Json.String].ForeColor = IntToColor(0x008000);
+            scintilla1.Styles[Style.Json.StringEol].ForeColor = IntToColor(0x008000);
+            scintilla1.Styles[Style.Json.Number].ForeColor = IntToColor(0xff0000);
+            scintilla1.Styles[Style.Json.Operator].ForeColor = IntToColor(0x808080);
+            scintilla1.Styles[Style.Json.BlockComment].ForeColor = IntToColor(0x40BF57);
+            scintilla1.Styles[Style.Json.LineComment].ForeColor = IntToColor(0x40BF57);
+            scintilla1.Styles[Style.Json.Uri].ForeColor = IntToColor(0x008000);
+            scintilla1.Styles[Style.FoldDisplayText].Underline = true;
+
+            scintilla1.CaretForeColor = IntToColor(0xffffff);
 
             scintilla1.Lexer = ScintillaNET.Lexer.Json;
 
-            scintilla1.SetKeywords(0, "class extends implements import interface new case do while else if for in switch throw get set function var try catch finally while with default break continue delete return each const namespace package include use is as instanceof typeof author copy default deprecated eventType example exampleText exception haxe inheritDoc internal link mtasc mxmlc param private return see serial serialData serialField since throws usage version langversion playerversion productversion dynamic private public partial static intrinsic internal native override protected AS3 final super this arguments null Infinity NaN undefined true false abstract as base bool break by byte case catch char checked class const continue decimal default delegate do double descending explicit event extern else enum false finally fixed float for foreach from goto group if implicit in int interface internal into is lock long new null namespace object operator out override orderby params private protected public readonly ref return switch struct sbyte sealed short sizeof stackalloc static string select this throw true try typeof uint ulong unchecked unsafe ushort using var virtual volatile void while where yield");
-            scintilla1.SetKeywords(1, "void Null ArgumentError arguments Array Boolean Class Date DefinitionError Error EvalError Function int Math Namespace Number Object RangeError ReferenceError RegExp SecurityError String SyntaxError TypeError uint XML XMLList Boolean Byte Char DateTime Decimal Double Int16 Int32 Int64 IntPtr SByte Single UInt16 UInt32 UInt64 UIntPtr Void Path File System Windows Forms ScintillaNET");
+            scintilla1.SetKeywords(4, "true false");
 
+        }
+
+        private void setContextMenu()
+        {
+            ContextMenu contextMenu = new ContextMenu();
+
+            contextMenu.Popup += ContextMenu_Popup;
+            scintilla1.ContextMenu = contextMenu;
+        }
+        private void ContextMenu_Popup(System.Object sender, System.EventArgs e)
+        {
+            scintilla1.ContextMenu.MenuItems.Clear();
+
+            scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Copy", (s, ea) => scintilla1.Copy()));
+            scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Select All", (s, ea) => scintilla1.SelectAll()));
+
+
+
+
+            System.Drawing.Point point = System.Windows.Forms.Control.MousePosition;
+            var cor = scintilla1.PointToClient(point);
+            var pos = scintilla1.CharPositionFromPoint(cor.X, cor.Y);
+
+            int startPos = ValueStartPosition(pos);
+            int endPos = ValueEndPosition(pos);
+
+            string text = scintilla1.GetTextRange(startPos, endPos - startPos);
+
+            if ((text.StartsWith("http://") || text.StartsWith("https://")))
+            {
+                scintilla1.ContextMenu.MenuItems.Add("-");
+                scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Open in Browser", (s, ea) => Process.Start(text)));
+                if (text.EndsWith(".jpg") || text.EndsWith(".png"))
+                {
+                    scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Open Image in new Window", (s, ea) =>
+                    {
+
+                    }));
+                    scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Save Image", (s, ea) =>
+                    {
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.RestoreDirectory = true;
+                        saveFileDialog1.Filter = "Image Files(*" + text.Split('.').Last() + ")|*." + text.Split('.').Last() + "|All files (*.*)|*.*";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            using(var webClient = new WebClient())
+                            {
+                                webClient.DownloadFile(text, saveFileDialog1.FileName);
+                            }
+                        }
+                    }));
+                }
+            }
+        }
+
+        private void DwellStart(object sender, DwellEventArgs e)
+        {
+            int startPos = ValueStartPosition(e.Position);
+            int endPos = ValueEndPosition(e.Position);
+            string text = scintilla1.GetTextRange(startPos, endPos - startPos);
+            if (text.StartsWith("http://") || text.StartsWith("https://"))
+            {
+                ToolTip toolTip = new ToolTip();
+                toolTip.SetToolTip(scintilla1, "STRG+Click to open");
+            }
+        }
+        private void MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            System.Drawing.Point point = System.Windows.Forms.Control.MousePosition;
+            var cor = scintilla1.PointToClient(point);
+            var pos = scintilla1.CharPositionFromPoint(cor.X, cor.Y);
+
+            int startPos = ValueStartPosition(pos);
+            int endPos = ValueEndPosition(pos);
+
+            string text = scintilla1.GetTextRange(startPos, endPos - startPos);
+
+            if (text.StartsWith("http://") || text.StartsWith("https://"))
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (ModifierKeys.HasFlag(Keys.Control))
+                    {
+                        Process.Start(text);
+                    }
+                }
+            }
+        }
+
+        private int ValueStartPosition(int position)
+        {
+            bool found = false;
+            int currentposition = position;
+            while(!found)
+            {
+                if(currentposition < 0)
+                {
+                    found = true;
+                } else
+                {
+                    if (scintilla1.GetCharAt(currentposition) == '"')
+                    {
+                        found = true;
+                        currentposition += 1;
+                    }
+                    else
+                    {
+                        currentposition -= 1;
+                    }
+                }
+            }
+            return currentposition;
+        }
+
+        private int ValueEndPosition(int position)
+        {
+            bool found = false;
+            int currentposition = position;
+            while (!found)
+            {
+                if (currentposition > scintilla1.TextLength - 1)
+                {
+                    found = true;
+                }
+                else
+                {
+                    if (scintilla1.GetCharAt(currentposition) == '"')
+                    {
+                        found = true;
+                    }
+                    else
+                    {
+                        currentposition += 1;
+                    }
+                }
+            }
+            return currentposition;
         }
 
         private void OnTextChanged(object sender, EventArgs e)
@@ -140,7 +301,7 @@ namespace FNEndpoints.Scintilla
         /// <summary>
         /// the background color of the text area
         /// </summary>
-        private const int BACK_COLOR = 0x2A211C;
+        private const int BACK_COLOR = 0x272727;
 
         /// <summary>
         /// default text color of the text area
@@ -166,7 +327,7 @@ namespace FNEndpoints.Scintilla
         /// <summary>
         /// set this true to show circular buttons for code folding (the [+] and [-] buttons on the margin)
         /// </summary>
-        private const bool CODEFOLDING_CIRCULAR = true;
+        private const bool CODEFOLDING_CIRCULAR = false;
 
         private void InitNumberMargin()
         {
@@ -219,7 +380,7 @@ namespace FNEndpoints.Scintilla
             scintilla1.Margins[FOLDING_MARGIN].Type = MarginType.Symbol;
             scintilla1.Margins[FOLDING_MARGIN].Mask = Marker.MaskFolders;
             scintilla1.Margins[FOLDING_MARGIN].Sensitive = true;
-            scintilla1.Margins[FOLDING_MARGIN].Width = 20;
+            scintilla1.Margins[FOLDING_MARGIN].Width = 15;
 
             // Set colors for all folding markers
             for (int i = 25; i <= 31; i++)
@@ -367,7 +528,7 @@ namespace FNEndpoints.Scintilla
             SearchManager.Find(true, true);
         }
 
-        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
+        private void TxtSearch_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (HotKeyManager.IsHotkey(e, Keys.Enter))
             {
