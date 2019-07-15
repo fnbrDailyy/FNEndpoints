@@ -110,6 +110,18 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminTab\AdminInputPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminTab\AdminInputPassword.Designer.cs">
+      <DependentUpon>AdminInputPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTab\AdminTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminTab\AdminTab.Designer.cs">
+      <DependentUpon>AdminTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Api.cs" />
     <Compile Include="DownloadUpdateDialog.cs">
       <SubType>Form</SubType>
@@ -183,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminTab\AdminInputPassword.resx">
+      <DependentUpon>AdminInputPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DownloadUpdateDialog.resx">
       <DependentUpon>DownloadUpdateDialog.cs</DependentUpon>

@@ -180,5 +180,10 @@ namespace FNEndpoints
         {
             openPage(status1);
         }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace FNEndpoints
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.status_button = new System.Windows.Forms.Button();
             this.store_button = new System.Windows.Forms.Button();
             this.aesKey_button = new System.Windows.Forms.Button();
             this.news_button = new System.Windows.Forms.Button();
@@ -45,8 +46,8 @@ namespace FNEndpoints
             this.news1 = new FNEndpoints.Pages.News();
             this.aesKeys1 = new FNEndpoints.Pages.AesKeys();
             this.store1 = new FNEndpoints.Pages.Store();
-            this.status_button = new System.Windows.Forms.Button();
             this.status1 = new FNEndpoints.Pages.Status();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,8 @@ namespace FNEndpoints
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.adminToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1191, 24);
@@ -91,6 +93,19 @@ namespace FNEndpoints
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 681);
             this.panel1.TabIndex = 1;
+            // 
+            // status_button
+            // 
+            this.status_button.BackColor = System.Drawing.Color.Gainsboro;
+            this.status_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.status_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status_button.Location = new System.Drawing.Point(0, 447);
+            this.status_button.Name = "status_button";
+            this.status_button.Size = new System.Drawing.Size(200, 91);
+            this.status_button.TabIndex = 5;
+            this.status_button.Text = "Status";
+            this.status_button.UseVisualStyleBackColor = false;
+            this.status_button.Click += new System.EventHandler(this.status_button_Click);
             // 
             // store_button
             // 
@@ -197,19 +212,6 @@ namespace FNEndpoints
             this.store1.Size = new System.Drawing.Size(991, 681);
             this.store1.TabIndex = 5;
             // 
-            // status_button
-            // 
-            this.status_button.BackColor = System.Drawing.Color.Gainsboro;
-            this.status_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.status_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.status_button.Location = new System.Drawing.Point(0, 447);
-            this.status_button.Name = "status_button";
-            this.status_button.Size = new System.Drawing.Size(200, 91);
-            this.status_button.TabIndex = 5;
-            this.status_button.Text = "Status";
-            this.status_button.UseVisualStyleBackColor = false;
-            this.status_button.Click += new System.EventHandler(this.status_button_Click);
-            // 
             // status1
             // 
             this.status1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -217,6 +219,13 @@ namespace FNEndpoints
             this.status1.Name = "status1";
             this.status1.Size = new System.Drawing.Size(991, 681);
             this.status1.TabIndex = 6;
+            // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -261,6 +270,7 @@ namespace FNEndpoints
         private Store store1;
         private System.Windows.Forms.Button status_button;
         private Status status1;
+        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
     }
 }
 

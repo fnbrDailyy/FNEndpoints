@@ -49,5 +49,10 @@ namespace FNEndpoints
                 textBox3.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox2.UseSystemPasswordChar = !this.checkBox1.Checked;
+        }
     }
 }

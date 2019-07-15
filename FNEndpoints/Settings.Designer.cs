@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.DesignGroupBox = new System.Windows.Forms.GroupBox();
             this.imagesCheckBox = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.EpicDataGroup.SuspendLayout();
             this.EndpointsGroup.SuspendLayout();
             this.PakGroup.SuspendLayout();
@@ -52,13 +53,14 @@
             // EpicDataGroup
             // 
             this.EpicDataGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.EpicDataGroup.Controls.Add(this.checkBox1);
             this.EpicDataGroup.Controls.Add(this.textBox2);
             this.EpicDataGroup.Controls.Add(this.textBox1);
             this.EpicDataGroup.Controls.Add(this.label2);
             this.EpicDataGroup.Controls.Add(this.label1);
             this.EpicDataGroup.Location = new System.Drawing.Point(12, 6);
             this.EpicDataGroup.Name = "EpicDataGroup";
-            this.EpicDataGroup.Size = new System.Drawing.Size(776, 72);
+            this.EpicDataGroup.Size = new System.Drawing.Size(776, 97);
             this.EpicDataGroup.TabIndex = 0;
             this.EpicDataGroup.TabStop = false;
             this.EpicDataGroup.Text = "Epic Games Data";
@@ -69,6 +71,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(675, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // textBox1
             // 
@@ -111,7 +114,7 @@
             this.EndpointsGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EndpointsGroup.Controls.Add(this.LanguageComboBox);
             this.EndpointsGroup.Controls.Add(this.label4);
-            this.EndpointsGroup.Location = new System.Drawing.Point(12, 139);
+            this.EndpointsGroup.Location = new System.Drawing.Point(12, 164);
             this.EndpointsGroup.Name = "EndpointsGroup";
             this.EndpointsGroup.Size = new System.Drawing.Size(776, 49);
             this.EndpointsGroup.TabIndex = 4;
@@ -149,7 +152,7 @@
             this.PakGroup.Controls.Add(this.button1);
             this.PakGroup.Controls.Add(this.textBox3);
             this.PakGroup.Controls.Add(this.label3);
-            this.PakGroup.Location = new System.Drawing.Point(12, 84);
+            this.PakGroup.Location = new System.Drawing.Point(12, 109);
             this.PakGroup.Name = "PakGroup";
             this.PakGroup.Size = new System.Drawing.Size(776, 49);
             this.PakGroup.TabIndex = 5;
@@ -186,7 +189,7 @@
             // 
             this.DesignGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DesignGroupBox.Controls.Add(this.imagesCheckBox);
-            this.DesignGroupBox.Location = new System.Drawing.Point(12, 194);
+            this.DesignGroupBox.Location = new System.Drawing.Point(12, 219);
             this.DesignGroupBox.Name = "DesignGroupBox";
             this.DesignGroupBox.Size = new System.Drawing.Size(776, 49);
             this.DesignGroupBox.TabIndex = 5;
@@ -202,6 +205,17 @@
             this.imagesCheckBox.TabIndex = 1;
             this.imagesCheckBox.Text = "Images";
             this.imagesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(671, 71);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(99, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "ShowPassword";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Settings
             // 
@@ -245,5 +259,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox DesignGroupBox;
         private System.Windows.Forms.CheckBox imagesCheckBox;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
