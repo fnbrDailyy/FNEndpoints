@@ -187,13 +187,20 @@ namespace FNEndpoints.Scintilla
                 {
                     scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Open Image in new Window", (s, ea) =>
                     {
-
+                        Form viewer = new Form();
+                        PictureBox pictureBox = new PictureBox();
+                        pictureBox.Dock = DockStyle.Fill;
+                        pictureBox.Load(text);
+                        pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                        viewer.Controls.Add(pictureBox);
+                        viewer.ShowDialog();
                     }));
                     scintilla1.ContextMenu.MenuItems.Add(new MenuItem("Save Image", (s, ea) =>
                     {
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                         saveFileDialog1.RestoreDirectory = true;
-                        saveFileDialog1.Filter = "Image Files(*" + text.Split('.').Last() + ")|*." + text.Split('.').Last() + "|All files (*.*)|*.*";
+                        saveFileDialog1.FileName = text.Split('/').Last();
+                        saveFileDialog1.Filter = "Image Files|*." + text.Split('.').Last();
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             using(var webClient = new WebClient())
